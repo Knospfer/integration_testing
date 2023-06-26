@@ -12,22 +12,20 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/': (_) => _LoginScreen(),
-        'home': (_) => const _HomeScreen(),
+        '/': (_) => LoginScreen(),
+        'home': (_) => const HomeScreen(),
       },
     );
   }
 }
 
-class _LoginScreen extends StatelessWidget {
+class LoginScreen extends StatelessWidget {
   final form = FormGroup({
     'email': FormControl(validators: [Validators.required]),
     'password': FormControl(validators: [Validators.required]),
   });
 
   void validate(FormGroup formGroup, BuildContext context) {
-    if (formGroup.invalid) return;
-
     Navigator.of(context).pushNamed('home');
   }
 
@@ -42,10 +40,12 @@ class _LoginScreen extends StatelessWidget {
         child: Column(
           children: [
             ReactiveTextField(
+              key: const ValueKey('email'),
               formControlName: 'email',
               decoration: const InputDecoration(label: Text('Email')),
             ),
             ReactiveTextField(
+              key: const ValueKey('password'),
               formControlName: 'password',
               decoration: const InputDecoration(label: Text('Password')),
             ),
@@ -53,6 +53,7 @@ class _LoginScreen extends StatelessWidget {
             ReactiveFormConsumer(
               builder: (context, formGroup, child) {
                 return ElevatedButton(
+                  key: const ValueKey('submit_button'),
                   onPressed: formGroup.valid
                       ? () => validate(formGroup, context)
                       : null,
@@ -67,12 +68,13 @@ class _LoginScreen extends StatelessWidget {
   }
 }
 
-class _HomeScreen extends StatelessWidget {
-  const _HomeScreen();
+class HomeScreen extends StatelessWidget {
+  const HomeScreen();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const ValueKey('home_scaffold'),
       appBar: AppBar(
         title: const Text("Home!"),
       ),
