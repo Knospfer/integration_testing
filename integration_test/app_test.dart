@@ -4,7 +4,9 @@ import 'package:integration_test/integration_test.dart';
 import 'package:integration_testing/main.dart' as app;
 
 void main() {
-  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  //senza questo su ios non va perchè non può accedere a una vera tastierra
+  binding.testTextInput.register();
 
   group('e2e test', () {
     testWidgets(
@@ -16,11 +18,13 @@ void main() {
 
         final emailTextField = find.byKey(const ValueKey('email'));
         await widgetTester.enterText(emailTextField, 'utente@prova.it');
+        await widgetTester.testTextInput.receiveAction(TextInputAction.done);
 
         await widgetTester.pumpAndSettle();
 
         final passwordTextField = find.byKey(const ValueKey('password'));
         await widgetTester.enterText(passwordTextField, 'password123!?');
+        await widgetTester.testTextInput.receiveAction(TextInputAction.done);
 
         await widgetTester.pumpAndSettle();
 
