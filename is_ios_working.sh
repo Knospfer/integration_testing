@@ -1,5 +1,5 @@
-deviceId="B8C2949A-5234-492B-BC26-E8E56CA360CF" #iphone14 liscio -> lo trovi su xcode window -> devices and simulators
-dev_target="16.1"
+deviceId="00008020-000D1C622151002E" #"00008020-000D1C622151002E" #F0C0A06B-EA41-4959-891A-76DFF4EC30A5   #iphone14 liscio -> lo trovi su xcode window -> devices and simulators
+dev_target="16.4"
 
 xcodebuild test-without-building \
   -xctestrun "build/ios_integ/Build/Products/Runner_iphoneos$dev_target-arm64.xctestrun" \

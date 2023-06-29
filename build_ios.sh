@@ -1,6 +1,6 @@
 output="../build/ios_integ"
 product="build/ios_integ/Build/Products"
-dev_target="16.1" #occhio a tenerla aggiornata
+dev_target="16.4" #occhio a tenerla aggiornata
 configuration="Release" #Debug Release
 
 #https://firebase.google.com/docs/test-lab/ios/run-xctest?authuser=0
@@ -13,7 +13,7 @@ configuration="Release" #Debug Release
 flutter clean && flutter pub get
 
 # Pass --simulator if building for the simulator.
-flutter build ios integration_test/app_test.dart --release
+flutter build ios integration_test/app_test.dart --release #--release
 
 pushd ios
 xcodebuild build-for-testing \
