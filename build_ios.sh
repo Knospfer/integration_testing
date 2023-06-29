@@ -32,3 +32,5 @@ zip -r "ios_tests.zip" "$configuration-iphoneos" "Runner_iphoneos$dev_target-arm
 popd
 
 sh is_ios_working.sh
+
+# se non usi ios 16.5, il 15.7 non becca gli entitlements giusti su firebase maledetto
