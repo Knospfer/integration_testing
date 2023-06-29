@@ -6,6 +6,7 @@ import 'package:integration_testing/main.dart' as app;
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   //senza questo su ios non va perchè non può accedere a una vera tastierra
+  //https://github.com/flutter/flutter/issues/87990
   binding.testTextInput.register();
 
   group('e2e test', () {
